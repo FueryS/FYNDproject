@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/FYNDproject/static/css/main.1fa8ba42.css",
+    "main.js": "/FYNDproject/static/js/main.f47e3a5b.js",
+    "static/js/453.d4169ddd.chunk.js": "/FYNDproject/static/js/453.d4169ddd.chunk.js",
+    "static/media/dumblesHolders.jpeg": "/FYNDproject/static/media/dumblesHolders.c601a66af202b7fa6fa9.jpeg",
+    "static/media/combo_equipments.jpg": "/FYNDproject/static/media/combo_equipments.bb4a6e91e5dd68be457e.jpg",
+    "static/media/weightPlates.jpeg": "/FYNDproject/static/media/weightPlates.77b32c0033990ae21773.jpeg",
+    "static/media/benchPressOffer.jpg": "/FYNDproject/static/media/benchPressOffer.8be2bd3c3e0866715bdd.jpg",
+    "static/media/buy_abs_why_not.jpg": "/FYNDproject/static/media/buy_abs_why_not.75ef0a5a6f3b0513cd34.jpg",
+    "static/media/dumblesOffer.jpg": "/FYNDproject/static/media/dumblesOffer.d35f5272a380054afd76.jpg",
+    "static/media/hakla-shah-rukh-khan.png": "/FYNDproject/static/media/hakla-shah-rukh-khan.9614f4083f8f681be220.png",
+    "static/media/more_dumbles.jpg": "/FYNDproject/static/media/more_dumbles.8205793dafa01c2b7eaa.jpg",
+    "index.html": "/FYNDproject/index.html",
+    "main.1fa8ba42.css.map": "/FYNDproject/static/css/main.1fa8ba42.css.map",
+    "main.f47e3a5b.js.map": "/FYNDproject/static/js/main.f47e3a5b.js.map",
+    "453.d4169ddd.chunk.js.map": "/FYNDproject/static/js/453.d4169ddd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1fa8ba42.css",
+    "static/js/main.f47e3a5b.js"
+  ]
+}
