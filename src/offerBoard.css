@@ -1,0 +1,60 @@
+.offers{
+    aspect-ratio: 15/10;
+    max-height: max(25rem,25vh);
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    display: flex;
+    border-radius: 1rem;
+    margin-left: 1rem;
+
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+.offer-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.offers img {
+    flex: 1 0 auto;
+    object-fit: cover; 
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    border-radius: 1rem;
+    margin-right: 1rem;
+    display: block;
+}
+
+.offer-nav{
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+
+    position: absolute;
+    bottom: 1%;
+}
+
+.offer-nav-button{
+    background: rgba(2, 2, 2, 0.5);
+    border-radius: 100%;
+    width: 1rem;
+    height: 1rem;
+    margin: 0.2rem;
+    transition: color 0.5s, scale 0.5s margin 0.5s;
+}
+
+.offer-nav-button:hover{
+    background: rgba(255, 255, 255, 0.8);
+    scale: 1.2;
+    margin: 0.3rem 0.1rem;
+}
+
+.offer-nav-button.active {
+    background: rgba(255, 255, 255, 1);
+}

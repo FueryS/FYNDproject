@@ -1,0 +1,147 @@
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+}
+
+.container-0 >*{
+    margin: 1rem;
+}
+
+/* collapse to column on small screens
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+}
+ */
+.LBM {
+    flex: 0 0 clamp(10rem, 20vw, 15rem); /* fixed-ish width, responsive */
+}
+
+.container-0 {
+    display: flex;
+    flex-direction: column;
+
+    max-height: 100vh;
+
+    overflow-y: scroll;
+
+    scrollbar-width: none;
+}
+
+.container-SBM-Board-SM {
+    height: clamp(10rem, 100vh , 60rem);
+
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+
+
+.container-SBM-Board {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.BDM {
+    margin-top: clamp(3rem, 20vh , 10rem);
+
+    display: flex;
+    gap: 0.6rem;
+    overflow-x: show;
+    overflow-y: show;
+    flex-wrap: wrap;
+    justify-content:center;
+    
+
+    min-height:15rem;
+    max-width: 80vw;
+    
+
+    
+
+    /* Firefox */
+    /*
+    scrollbar-width: thin;    
+    scrollbar-color: var(--Theme-scroller) transparent;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    */
+}
+/* Hide scrollbar for all browsers */
+
+/* WebKit browsers (Chrome, Safari, Edge) 
+.BDM::-webkit-scrollbar {
+    height: 0.5vh;                  
+}
+
+.BDM::-webkit-scrollbar-thumb {
+    background-color: var(--Theme-scroller); 
+    border-radius: 0.3rem;
+}
+
+.BDM::-webkit-scrollbar-track {
+    background: var(--Theme-scroller);
+}
+
+.BDM > * {
+    scroll-snap-align: start;
+}
+*/
+
+.SM{
+    height: fit-content;
+}
+
+.LBM{
+    background-color: aliceblue;
+    min-height: 70vh;
+
+    display: flex;
+    justify-content: start;
+    align-items:flex-start;
+}
+
+@media (max-width: 768px) {
+    .container-SBM-Board-SM {
+        flex-direction: column;
+    }
+    .BDM {
+        display: flex;
+        gap: 0.6rem;
+        overflow: show;
+        min-width: 100%;
+    }
+
+    .LBM {
+        display: flex;
+        position: absolute;
+        height: 100%;
+        z-index: 100;
+        top:5.7vh;
+    }
+
+    .nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 200;
+    }
+
+    .container-0 {
+        position: absolute;
+        top: 5.7vh;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 5.7vh);
+        overflow-y: auto;
+        background-color: var(--Theme);
+    }
+}

@@ -1,0 +1,46 @@
+:root {  
+    --themeColorMenu: rgb(10, 0, 0);
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  /* Add your background pattern here */
+  
+}
+
+.order-button{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.menu {
+    background-color: #313131;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.171) 2px, transparent 0);
+    background-size: 30px 30px;
+    background-position: -5px -5px;
+    color: white;
+
+    /* responsive width that shrinks on zoom or small screens */
+    width: 100%;
+
+    /* makes sure it doesn’t get *too small* on very tiny screens */
+
+    height:100%;
+    padding-inline: 1vw;
+    padding: 1rem;
+}
+
+.menu ul {
+    margin-top: max(2vh,2vw);
+    font-size: 2vh;
+}
+
+.menu a {
+    color: rgb(142, 142, 141);
+}
+
+.menu a:hover {
+    color: rgb(252, 193, 155);
+}

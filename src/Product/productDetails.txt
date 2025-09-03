@@ -1,0 +1,23 @@
+      Storing it here Ill add it to main file if i feel like it
+      
+      {/*
+      <motion.section
+        className="details"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.div className="details-content" variants={fadeInLeft}>
+          <h2 className="section-title">Engineered for Excellence</h2>
+          <p className="details-text">{detailsText}</p>
+
+          {specList}
+        </motion.div>
+
+        <motion.div className="details-image" variants={fadeInRight}>
+          <div className="product-image-placeholder">
+            <span className="placeholder-text">Detail View</span>
+          </div>
+        </motion.div>
+      </motion.section>
+      */}

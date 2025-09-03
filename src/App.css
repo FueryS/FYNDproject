@@ -1,0 +1,78 @@
+/*
+.Body0{
+    width: 70%;
+}
+
+
+.layer1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: flex-start; 
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.leftBar{
+    width: 10%;
+    height: inherit;
+    margin-top: 0;
+}
+
+/*    <>
+    <div className='nav'> 
+    <Nav />
+    </div>
+
+    <div className='container'>
+      
+
+      <div className='leftBar'>
+        <LeftBarMain />
+      </div>
+
+      <div className= 'Body0'> 
+        <SearchBarMain/>
+        <div className='layer1'>
+          <div>
+          <Board /> 
+          </div>
+          <ScheduleMain/>
+
+        </div>
+
+      </div>
+    </div>
+
+    </>
+.container{
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+
+
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+}
+*/
+
+/*Experiment*/
+:root {
+  --Theme: #c6c6c6;
+  --Theme-scroller: #b4d2cd;
+  --theme-secondary: #3a3f44;
+}
+
+.nav {
+  width: 100%;
+  height: fit-content;
+  z-index: 100;
+
+  display: flex;
+}
+
+.body {
+  background-color: var(--Theme);
+  display: flex;
+}

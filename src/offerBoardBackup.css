@@ -1,0 +1,105 @@
+:root{
+    --barHeight:3rem;
+    --barWidth:37.5rem;
+}
+
+.offers{
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: var(--barWidth);
+
+    position: relative; 
+}
+
+.offer-items{
+    display: flex;
+    overflow-x: auto;
+    aspect-ratio: 16/9;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0,0%,0%,0.25);
+}
+
+.offer-items img{
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+}
+
+
+.next-bar{
+    width: var(--barWidth);
+    height:var(--barHeight);
+
+    background-color: aqua;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.next-bar-overlay{
+    --timeSpan:2s;
+
+    width: 20rem;
+    height:var(--barHeight);
+    background-color: rgb(0, 128, 255);
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    animation: expand var(--timeSpan) infinite ease-in-out;
+}
+
+.offer-text{
+    font-size: 30px;
+    font-weight: 900;
+    left: 55%;
+
+    color: rgb(0, 0, 0);
+    position: absolute;
+    top: 0;
+    z-index: 0;
+}
+
+.button-container{
+    position: absolute;
+    width: 100%;
+}
+
+.next-bar-button{
+  background: none;
+  cursor: pointer;
+  color: none;
+
+  position: relative;
+  width: 50%;
+  height: var(--barHeight);
+  z-index: 3;
+
+}
+
+/*Ill try to make replace the constant values with a varibale if need this again*/
+@keyframes expand {
+    0%{
+        width: 0;
+    }
+
+    80%{
+        width: 45rem;
+    }
+
+    90%{
+        width: 45rem;
+    }
+
+    100%{
+        width: 0;
+    }
+    
+}

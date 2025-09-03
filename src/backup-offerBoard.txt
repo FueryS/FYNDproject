@@ -1,0 +1,104 @@
+import React, { useEffect, useRef, useState } from 'react';
+import placeHolder1 from './Pictures/placeHolder1.jpg';
+import placeHolder2 from './Pictures/placeHolder2.jpg';
+import './offerBoard.css';
+
+function Board() {
+  return (
+    <div className='offers'>
+      <ScrollingOffer />
+      
+    </div>
+  );
+}
+
+
+function ScrollingOffer() {
+  const images = [placeHolder1, placeHolder2]; // Add more images as needed
+  const [current, setCurrent] = useState(0);
+  const timeoutRef = useRef(null);
+  const itemsRef = useRef(null);
+  const timeSpan = 5000;
+  const timeSpan_css = `${timeSpan / 1000}s`;
+
+  // Auto-advance every 2 seconds
+  useEffect(() => {
+    timeoutRef.current = setTimeout(() => {
+        setCurrent((prev) => (prev + 1) % images.length);
+      }, timeSpan);
+    
+    return () => clearTimeout(timeoutRef.current);
+  }, [current, images.length]);
+
+  
+
+  // Scroll to the current image when it changes
+  /*
+  useEffect(() => {
+    if (itemsRef.current) {
+      const img = itemsRef.current.children[current];
+      if (img) {
+        img.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+      }
+    }
+  }, [current]);
+  */
+
+  // Handlers for manual navigation
+
+  const goToNext = () => setCurrent((prev) => (prev + 1) % images.length);
+  const goToPrev = () => setCurrent((prev) => (prev - 1 + images.length) % images.length);
+
+  
+
+
+  function NextBar() {
+
+  const barRef= useRef(null);
+
+  useEffect(()=>{
+    const handleMouseUp=()=>{
+      console.log("listened");
+    };
+    const node = barRef.current;
+    if (node){
+      node.addEventListener('mouseup', handleMouseUp);
+    }
+    return() => {
+      if (node){
+        node.removeEventListener('mouseup',handleMouseUp);
+      }
+    };
+  },[]);
+
+
+  return (
+    <div className="next-bar" >
+          <span className='offer-text' style={{color: "rgb(0,0,0)", right:"2%"}}>Next offer</span>
+
+        <div
+          className="next-bar-overlay"
+          style={{ "--timeSpan": timeSpan_css }} ref={barRef}
+        >
+          <span className='offer-text' style={{color: "rgb(224, 248, 249)", left:"15px" , letterSpacing: "-0.2ch"}}>p r e v    o f f e r</span>
+        </div>
+        </div>
+  );
+  }
+
+  return (
+    <div className='offers'>
+      <div className='offer-items'>
+  <img src={images[current]} alt={`Gym Room Image ${current + 1}`} />
+</div>
+      <div className='button-container'>
+      <button className='next-bar-button' onClick={goToPrev}></button>
+      <button className='next-bar-button' onClick={goToNext}></button>
+      </div>
+      <NextBar timeSpan_css={timeSpan_css} />
+    </div>
+  );
+}
+
+
+export default Board;

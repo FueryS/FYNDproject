@@ -1,0 +1,66 @@
+.skeliton-image {
+    --bd: 1rem;
+    border-radius: var(--bd);
+
+    width: clamp(20rem, 40vh, 50rem);
+
+    aspect-ratio: 16 / 10;
+
+    background-color: black;
+    animation: skeliton-animation 1.5s infinite alternate ease-in-out;
+}
+
+
+
+
+
+@keyframes skeliton-animation{
+    0%{
+        background: linear-gradient(135deg, rgb(139, 138, 138) 0%, rgb(75, 75, 75) 100%);    
+    }
+    10%{
+        background: linear-gradient(135deg, rgb(139, 138, 138) 0%, rgb(75, 75, 75) 100%);       
+
+    }
+    20%{
+        background: linear-gradient(135deg, rgb(75, 75, 75) 0%, rgb(75, 75, 75) 10%,rgb(139, 138, 138) 15%, rgb(139, 138, 138) 25%,rgb(75, 75, 75) 30%, rgb(75, 75, 75) 100%);
+
+    }
+    30%{
+        background: linear-gradient(135deg, rgb(75, 75, 75) 0%, rgb(75, 75, 75) 20%,rgb(139, 138, 138) 25%, rgb(139, 138, 138) 35%,rgb(75, 75, 75) 40%, rgb(75, 75, 75) 100%);
+
+    }
+
+    40%{
+        background: linear-gradient(135deg, rgb(75, 75, 75) 0%, rgb(75, 75, 75) 30%,rgb(139, 138, 138) 35%, rgb(139, 138, 138) 45%,rgb(75, 75, 75) 50%, rgb(75, 75, 75) 100%);
+
+    }
+
+    50%{
+        background: linear-gradient(135deg, rgb(75, 75, 75) 0%, rgb(75, 75, 75) 40%,rgb(139, 138, 138) 45%, rgb(139, 138, 138) 55%,rgb(75, 75, 75) 60%, rgb(75, 75, 75) 100%);
+
+    }
+
+    60%{
+        background: linear-gradient(135deg, rgb(75, 75, 75) 0%, rgb(75, 75, 75) 50%,rgb(139, 138, 138) 55%, rgb(139, 138, 138) 65%,rgb(75, 75, 75) 70%, rgb(75, 75, 75) 100%);
+
+    }
+
+    70%{
+        background: linear-gradient(135deg, rgb(75, 75, 75) 0%, rgb(75, 75, 75) 60%,rgb(139, 138, 138) 65%, rgb(139, 138, 138) 75%,rgb(75, 75, 75) 80%, rgb(75, 75, 75) 100%);
+
+    }
+    80%{
+        background: linear-gradient(135deg, rgb(75, 75, 75) 0%, rgb(75, 75, 75) 70%,rgb(139, 138, 138) 75%, rgb(139, 138, 138) 85%,rgb(75, 75, 75) 70%, rgb(75, 75, 75) 100%);
+
+    }
+    90%{
+         background: linear-gradient(135deg, rgb(75, 75, 75) 0%, rgb(139, 138, 138) 100%);
+    }
+
+    100%{
+         background: linear-gradient(135deg, rgb(75, 75, 75) 0%, rgb(139, 138, 138) 100%);
+    }
+    
+
+}
