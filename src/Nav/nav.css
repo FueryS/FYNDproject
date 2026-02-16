@@ -1,0 +1,426 @@
+/* ================= Global CSS Variables ================= */
+:root {
+  --navBarColor: rgb(22, 22, 22);
+  --textColor: rgb(255, 255, 255);
+  --logoColor: #5be9fe; /* fixed typo */
+  --hoverTextColor: rgb(255, 98, 0);
+  --fontSize: min(3.5vw, 1rem);
+  --loginColor: limegreen;
+  --signupColor: indigo;
+}
+
+/* ================= Navbar ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2vw;
+  background-color: var(--navBarColor);
+  width: 100%;
+  padding: 0.75vw 2vw;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 100;
+}
+
+/* Login button aligned left */
+.navbar-auth.left {
+  margin-right: auto; /* push links to right */
+  display: flex;
+  align-items: center;
+}
+
+/* Elegant button style */
+.boton-elegante {
+  padding: 12px 25px;
+  border: 2px solid #2c2c2c;
+  background-color: #1a1a1a;
+  color: var(--textColor);
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.4s ease;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+}
+
+.boton-elegante::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: scale(0);
+  transition: transform 0.5s ease;
+}
+
+.boton-elegante:hover::after {
+  transform: scale(4);
+}
+
+.boton-elegante:hover {
+  border-color: #666666;
+  background: #292929;
+}
+
+/* ================= Logo ================= */
+.navbar-logo {
+  color: var(--logoColor);
+  font-size: min(4vw, 1.5rem);
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin: 0 2vw;
+  transition: transform 0.5s ease;
+}
+
+.navbar-logo:hover {
+  animation: floating 1s infinite alternate;
+}
+
+@keyframes floating {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  80% {
+    transform: scale(1.02);
+  }
+  90% {
+    transform: scale(1.05);
+  }
+}
+
+/* ================= Navbar Links ================= */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 2vw;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navbar-links li a {
+  color: var(--textColor);
+  text-decoration: none;
+  font-size: var(--fontSize);
+  transition: color 0.3s, transform 0.3s;
+  position: relative;
+}
+
+.navbar-links li a:hover {
+  color: var(--hoverTextColor);
+  transform: translateY(-2px);
+}
+
+/* Active page highlight */
+.navbar-links li.active a {
+  color: var(--hoverTextColor);
+  font-weight: bold;
+}
+
+.navbar-links li.active a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--hoverTextColor);
+  border-radius: 2px;
+  animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* ================= Burger Menu ================= */
+.BurgerButton {
+  display: none;
+}
+
+.hamburger {
+  cursor: pointer;
+}
+
+.hamburger input {
+  display: none;
+}
+
+.hamburger svg {
+  height: clamp(30px, 5vw, 50px);
+  width: clamp(30px, 5vw, 50px);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+  fill: none;
+  stroke: white;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  transition: stroke-dasharray 0.6s, stroke-dashoffset 0.6s;
+}
+
+.line-top-bottom {
+  stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked + svg {
+  transform: rotate(-45deg);
+}
+
+.hamburger input:checked + svg .line-top-bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+
+/* ================= More Menu ================= */
+.more-dropdown {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: #3a3a3a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 0 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.more-dropdown.show {
+  display: flex;
+  flex-direction: column;
+  animation: dropdownAnimation 0.3s forwards;
+}
+
+@keyframes dropdownAnimation {
+  from {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  to {
+    max-height: 1000px;
+    opacity: 1;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+/* ================= Login / Signup Page ================= */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center */
+  align-items: center; /* horizontally center */
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  background-position: center;
+  background-size: cover;
+  font-family: "Segoe UI", sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.auth-heading.login {
+  color: var(--loginColor);
+}
+.auth-heading.signup {
+  color: var(--signupColor);
+}
+
+.auth-form {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px;
+  width: 350px;
+  max-width: 100%;
+  margin-top: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.input-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  color: white;
+  font-size: 14px;
+}
+
+/* Icon hover grow */
+.icon {
+  color: white;
+  margin-right: 10px;
+  transition: transform 0.3s;
+}
+.input-box:hover .icon {
+  transform: scale(1.3);
+}
+
+/* Submit buttons */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 15px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-btn.login {
+  background: var(--loginColor);
+}
+.submit-btn.signup {
+  background: var(--signupColor);
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+}
+
+/* Toggle switch */
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--loginColor);
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+  background-color: var(--signupColor);
+}
+.switch input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .navbar-links {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+  }
+  .navbar-links.show {
+    display: flex;
+  }
+  .BurgerButton {
+    display: flex;
+    font-size: 1.5rem;
+    color: var(--textColor);
+    cursor: pointer;
+  }
+  .auth-form {
+    width: 90%;
+    padding: 20px;
+  }
+  .auth-heading {
+    font-size: 1.8rem;
+  }
+  .input-box input {
+    font-size: 12px;
+  }
+  .submit-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-heading {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .auth-form {
+    width: 100%;
+    border-radius: 12px;
+    padding: 15px;
+  }
+  .input-box {
+    padding: 8px;
+  }
+  .icon {
+    margin-right: 6px;
+  }
+}

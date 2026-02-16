@@ -1,78 +1,77 @@
-import { useRef } from 'react';
-import React, { useEffect}  from 'react';
-import styled from 'styled-components';
+// src/components/OrderButton.jsx
+import React from "react";
+import styled from "styled-components";
+import { useCart } from "../../Backend/CartContext";
+import { useUser } from "../../Backend/userContext";
+import OrderService from "../../services/orderService";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+const StyledWrapper = styled.div`
+  button {
+    position: relative;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #ff6a00, #ee0979);
+    color: white;
+    transition: 0.3s ease;
+  }
 
-const Button = ({ handleclick }) => {
+  button:hover {
+    transform: scale(1.05);
+  }
+`;
+
+const OrderButton = () => {
+  const { cartItems, clearCart } = useCart();
+  const { user } = useUser();
+
+  const handleOrder = async () => {
+    if (!user) {
+      toast.warning("⚠️ Please login to place an order");
+      return;
+    }
+
+    if (cartItems.length === 0) {
+      toast.info("🛒 Your cart is empty!");
+      return;
+    }
+
+    const items = cartItems.map((item) => ({
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity || 1,
+    }));
+
+    toast.info("🕒 Placing your order...");
+
+    const result = await OrderService.placeOrder({
+      userId: user._id,
+      items,
+    });
+
+    if (result.error) {
+      toast.error("❌ Order failed! Please try again later.");
+    } else {
+      clearCart();
+      toast.success(
+        `✅ Order placed successfully! Total: ₹${result.order.totalPrice.toFixed(
+          2
+        )}`
+      );
+    }
+  };
+
   return (
     <StyledWrapper>
-      <button onClick={handleclick}>
-        <span className="transition" />
-        <span className="gradient" />
-        <span className="label">Order</span>
+      <button onClick={handleOrder}>
+        <span>Place Order</span>
       </button>
     </StyledWrapper>
   );
 };
 
-
-const StyledWrapper = styled.div`
-  button {
-    font-size: 1rem;
-    padding: 0.8em 3em;
-    font-weight: 500;
-    background: #1f2937;
-    color: white;
-    border: none;
-    position: relative;
-    left: 0;
-    overflow: hidden;
-    border-radius: 0.6em;
-    cursor: pointer;
-
-    margin-top: 1em;
-  }
-
-  .gradient {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    border-radius: 0.6em;
-    margin-top: -0.25em;
-    background-image: linear-gradient(
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.3)
-    );
-  }
-
-  .label {
-    position: relative;
-    top: -1px;
-  }
-
-  .transition {
-    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    transition-duration: 500ms;
-    background-color: rgba(16, 185, 129, 0.6);
-    border-radius: 9999px;
-    width: 0;
-    height: 0;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  button:hover .transition {
-    width: 14em;
-    height: 14em;
-  }
-
-  button:active {
-    transform: scale(0.97);
-  }`;
-
-export default Button;
+export default OrderButton;
