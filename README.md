@@ -1,3 +1,8 @@
+website direct link:https://FueryS.github.io/FYNDproject/
+
+In the website click on any of the tabs on navigation bar to continue
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
